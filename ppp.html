@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<title>Reva Saxena | Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: black;
+    color: white;
+    line-height: 1.6;
+}
+
+/* NAVBAR */
+.navbar-custom {
+    background: rgba(40, 40, 40, 0.6) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    padding: 15px 50px;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: lightgray !important;
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: 5px;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.navbar-custom .navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: width 0.25s ease;
+}
+
+.navbar-custom .navbar-nav .nav-link:hover,
+.navbar-custom .navbar-nav .nav-link.active-link {
+    color: white !important;
+    opacity: 0.85;
+}
+
+.navbar-custom .navbar-nav .nav-link:hover::after,
+.navbar-custom .navbar-nav .nav-link.active-link::after {
+    width: 100%;
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: gray;
+}
+
+.navbar-custom .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* Bootstrap Dropdown in navbar */
+.navbar-custom .dropdown-menu {
+    background: rgba(20, 20, 20, 0.95);
+    border: 1px solid gray;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    min-width: 140px;
+}
+
+.navbar-custom .dropdown-menu .dropdown-item {
+    color: lightgray;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.navbar-custom .dropdown-menu .dropdown-item:hover {
+    color: white;
+    background: rgba(255,255,255,0.07);
+}
+
+.navbar-custom .dropdown-toggle {
+    color: lightgray !important;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.navbar-custom .dropdown-toggle:hover {
+    color: white !important;
+}
+
+.jumbotron-dark {
+    background: #111 !important;
+    border-bottom: 1px solid #333;
+    padding: 80px;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border: 3px solid gray;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    font-size: 14px;
+}
+
+section {
+    padding: 90px 0;
+    background: black;
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 35px;
+    color: white;
+    border-bottom: 2px solid gray;
+    display: inline-block;
+    padding-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.card, .timeline-item {
+    background: #181818;
+    border: 1px solid gray;
+    border-radius: 14px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    position: relative;
+}
+
+.card {
+    background: #181818;
+    border: 1px solid gray;
+    border-radius: 14px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+
+.card button {
+    margin-top: 10px;
+}
+
+.card p {
+    color: #d1d5db;
+    flex-grow: 1;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.card h3 {
+    color: white;
+}
+
+.card:hover,
+.timeline-item:hover {
+    transform: translateY(-10px) scale(1.04);
+    border-color: darkgray;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 10px rgba(255,255,255,0.05);
+    z-index: 10;
+}
+
+.project-link {
+    margin-top: 10px;
+}
+
+.timeline {
+    border-left: 2px solid gray;
+    padding-left: 32px;
+}
+
+.timeline-item {
+    margin-bottom: 42px;
+    padding: 24px 28px;
+}
+
+.timeline-item h3 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.timeline-item p {
+    color: #d1d5db;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    align-items: stretch;
+}
+
+.project-link {
+    margin-top: 20px;
+    color: lightgray;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid gray;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+#contact .card {
+    padding: 30px;
+}
+
+.project-link:hover {
+    color: white;
+    border-color: darkgray;
+}
+
+.skills-table-wrapper {
+    background: #181818;
+    border: 1px solid gray;
+    border-radius: 14px;
+    padding: 40px 45px;
+    overflow-x: auto;
+}
+
+.table-skills {
+    color: white;
+}
+
+.table-skills thead tr th {
+    background: #222;
+    color: white;
+    border-color: gray;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+.table-skills tbody tr td {
+    background: #181818;
+    color: #d1d5db;
+    border-color: #333;
+    vertical-align: middle;
+}
+
+.table-skills tbody tr:hover td {
+    background: #222;
+    color: white;
+}
+
+/* Skills Progress Bars */
+.skill-progress-section {
+    margin-top: 36px;
+}
+
+.skill-progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    color: #d1d5db;
+    font-size: 15px;
+}
+
+.progress {
+    background-color: #333;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    height: 12px;
+}
+
+.progress-bar {
+    border-radius: 8px;
+    background: linear-gradient(90deg, #555, #bbb);
+    transition: width 1.2s ease;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid gray;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+#contact .card p {
+    color: silver;
+    font-size: 17px;
+}
+
+.contact-form-card {
+    background: #181818;
+    border: 1px solid gray;
+    border-radius: 14px;
+    padding: 40px;
+}
+
+.form-label {
+    color: lightgray;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.form-control {
+    background: #222 !important;
+    border: 1px solid gray !important;
+    color: white !important;
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    border-color: darkgray !important;
+    box-shadow: 0 0 0 0.2rem rgba(150,150,150,0.2) !important;
+}
+
+.form-control::placeholder {
+    color: #666 !important;
+}
+
+.error-msg {
+    color: #ff6b6b;
+    font-size: 13px;
+    margin-top: 4px;
+    display: none;
+}
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 0;
+}
+
+.page-item .page-link {
+    background: #181818;
+    border: 1px solid gray;
+    color: lightgray;
+    transition: 0.2s;
+}
+
+.page-item .page-link:hover {
+    background: #222;
+    color: white;
+    border-color: darkgray;
+}
+
+.page-item.active .page-link {
+    background: #333;
+    border-color: gray;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 38px;
+    margin-top: 60px;
+    color: gray;
+    border-top: 1px solid gray;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer a:hover {
+    opacity: 0.85;
+}
+
+.collapse {
+    margin-top: 12px;
+    padding-top: 10px;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.show-anim {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn {
+    transition: all 0.25s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Success alert */
+#form-success {
+    display: none;
+    background: #1a3a1a;
+    border: 1px solid #2d6a2d;
+    color: #7fcf7f;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+/* Modal custom */
+.modal-content {
+    background: #181818;
+    border: 1px solid gray;
+    color: white;
+    border-radius: 14px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #333;
+}
+
+.modal-footer {
+    border-top: 1px solid #333;
+}
+
+.modal-title {
+    color: white;
+}
+
+.btn-close {
+    filter: invert(1);
+}
+
+/* Resume modal section headings */
+.resume-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #999;
+    border-bottom: 1px solid #333;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+    margin-top: 20px;
+}
+
+.resume-section-title:first-of-type {
+    margin-top: 0;
+}
+
+.resume-job-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1px;
+}
+
+.resume-job-meta {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+.resume-job-desc {
+    font-size: 13px;
+    color: #bbb;
+    margin-bottom: 0;
+    padding-left: 12px;
+    border-left: 2px solid #333;
+}
+
+.resume-skill-tag {
+    display: inline-block;
+    background: #222;
+    border: 1px solid #444;
+    color: #ccc;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin: 3px 3px 3px 0;
+}
+
+.resume-cert {
+    font-size: 13px;
+    color: #bbb;
+    padding: 4px 0;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.resume-cert:last-child {
+    border-bottom: none;
+}
+
+.resume-project-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+}
+
+.resume-project-tech {
+    font-size: 12px;
+    color: #888;
+}
+
+.resume-project-desc {
+    font-size: 13px;
+    color: #bbb;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .navbar-custom {
+        padding: 15px 20px;
+    }
+    .jumbotron-dark {
+        padding: 40px 24px;
+    }
+    section {
+        padding: 60px 0;
+    }
+    h2 {
+        font-size: 28px;
+    }
+    .skills-table-wrapper {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!--NAVBAR-->
+<nav class="navbar navbar-expand-lg sticky-top navbar-custom">
+    <div class="container-fluid px-0">
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+            <ul class="navbar-nav align-items-lg-center gap-lg-2">
+                <li class="nav-item"><a class="nav-link" href="#about"><i class="bi bi-person me-1"></i>About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#experience"><i class="bi bi-briefcase me-1"></i>Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects"><i class="bi bi-code-slash me-1"></i>Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills"><i class="bi bi-bar-chart me-1"></i>Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery"><i class="bi bi-images me-1"></i>Gallery</a></li>
+
+                <!--dropdown-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-three-dots me-1"></i>More
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#contact"><i class="bi bi-envelope me-2"></i>Contact</a></li>
+                        <li><a class="dropdown-item" href="#summary"><i class="bi bi-list-check me-2"></i>Summary</a></li>
+                        <li><a class="dropdown-item" href="https://www.linkedin.com/in/reva-saxena-61bb33342/" target="_blank"><i class="bi bi-linkedin me-2"></i>LinkedIn</a></li>
+                        <li><a class="dropdown-item" href="mailto:revasaxena90@gmail.com"><i class="bi bi-envelope-fill me-2"></i>Email Me</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--JUMBOTRON-->
+<div class="jumbotron-dark">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center" style="padding: 0 30px;">
+            <div class="col-lg-8 col-md-7">
+                <h1 class="display-4 fw-bold" style="font-size: 52px; letter-spacing: 1px; cursor: default; transition: transform 0.4s ease, text-shadow 0.4s ease;"
+                    onmouseover="this.style.transform='translateY(-6px)'; this.style.textShadow='0 0 12px gray';"
+                    onmouseout="this.style.transform=''; this.style.textShadow='';">
+                    Reva Saxena
+                </h1>
+                <p class="lead mt-4" style="font-size: 20px; max-width: 600px; color: silver;">
+                    BCA student with a strong academic foundation in programming,<br>
+                    data analysis, and emerging technologies. Experienced in web<br>
+                    development, analytics workflows, and real-world project<br>
+                    implementation through multiple internships across domains.
+                </p>
+                <div class="mt-4 d-flex gap-3 flex-wrap">
+                    <a href="#contact" class="btn btn-outline-light px-4">Get in Touch</a>
+                    <a href="#projects" class="btn btn-outline-light px-4">View Projects</a>
+                    <button type="button" class="btn btn-outline-light px-4" data-bs-toggle="modal" data-bs-target="#resumeModal">
+                        View Resume
+                    </button>
+                </div>
+                <!--alert badge-->
+                <div class="alert alert-secondary d-inline-block mt-4 py-2 px-3" role="alert" style="background: rgba(255,255,255,0.07); border: 1px solid gray; color: lightgray; border-radius: 8px; font-size: 14px;">
+                    🟢 Open to internships &amp; opportunities
+                </div>
+            </div>
+            <!--profile img-->
+            <div class="col-lg-4 col-md-5 d-flex justify-content-center mt-4 mt-md-0">
+                <img src="reva.jpeg"
+                     alt="Reva Saxena"
+                     class="img-fluid img-thumbnail rounded-circle profile-img"
+                     style="object-fit:cover; border:3px solid gray; background:#333;"
+                     onerror="this.outerHTML='<div class=\'img-thumbnail rounded-circle profile-img d-flex align-items-center justify-content-center\' style=\'width:200px;height:200px;background:#222;border:3px solid gray;color:gray;font-size:13px;text-align:center;\'>Profile<br>Photo</div>'"
+                />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- RESUME MODAL -->
+<div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content shadow">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resumeModalLabel"><i class="bi bi-file-earmark-person me-2"></i>Reva Saxena — Resume</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body py-3 px-4" style="font-size: 14px;">
+
+                <!-- Profile Summary -->
+                <p class="resume-section-title">Profile</p>
+                <p style="color: #bbb; font-size: 13px; line-height: 1.7;">
+                    BCA student with hands-on experience in web development and data analytics through multiple internships. Skilled in building responsive applications, data-driven solutions, and analytical dashboards. Seeking opportunities to apply technical and problem-solving skills to real-world projects.
+                </p>
+
+                <!-- Education -->
+                <p class="resume-section-title">Education</p>
+                <div class="mb-2">
+                    <div class="resume-job-title">IIS (Deemed to be University), Jaipur</div>
+                    <div class="resume-job-meta">Bachelor of Computer Applications &nbsp;·&nbsp; Expected May 2027 &nbsp;·&nbsp; Current CGPA: 9.6 / 10</div>
+                </div>
+                <div class="mb-2">
+                    <div class="resume-job-title">IIS (Deemed to be University), Jaipur</div>
+                    <div class="resume-job-meta">Advanced Diploma &nbsp;·&nbsp; May 2026</div>
+                </div>
+                <div class="mb-2">
+                    <div class="resume-job-title">IIS (Deemed to be University), Jaipur</div>
+                    <div class="resume-job-meta">Diploma &nbsp;·&nbsp; May 2025 &nbsp;·&nbsp; CGPA: 10 / 10</div>
+                </div>
+
+                <!-- Work Experience -->
+                <p class="resume-section-title">Work Experience</p>
+
+                <div class="mb-3">
+                    <div class="resume-job-title">Website Developer Intern — Mridul &amp; Rohan</div>
+                    <div class="resume-job-meta">Sep 2025 – Oct 2025</div>
+                    <p class="resume-job-desc">Developed responsive website pages by converting UI designs into functional components using clean, structured code. Improved performance and cross-browser compatibility by optimizing CSS and debugging UI issues using DevTools and DOM inspection.</p>
+                </div>
+
+                <div class="mb-3">
+                    <div class="resume-job-title">Data Analytics Intern — Algonive</div>
+                    <div class="resume-job-meta">Jun 2025 – Jul 2025</div>
+                    <p class="resume-job-desc">Built predictive models and anomaly detection workflows on large datasets. Developed real-time dashboards using Python, Plotly, and SQL, and streamlined data pipelines with automated validation and transformation.</p>
+                </div>
+
+                <div class="mb-3">
+                    <div class="resume-job-title">Python Developer Intern — Cognifyz Technologies</div>
+                    <div class="resume-job-meta">May 2025 – Jun 2025</div>
+                    <p class="resume-job-desc">Developed Python-based tools and mini-applications using clean, modular code. Worked on web scraping, automation, and basic data visualization, improving debugging, input validation, and file handling.</p>
+                </div>
+
+                <div class="mb-3">
+                    <div class="resume-job-title">Data Analyst Intern — NullClass</div>
+                    <div class="resume-job-meta">Apr 2025</div>
+                    <p class="resume-job-desc">Performed data preprocessing, analysis, and visualization using Python, Pandas, and Matplotlib to identify trends. Automated repetitive tasks and created dashboards in Jupyter Notebook.</p>
+                </div>
+
+                <!-- Projects -->
+                <p class="resume-section-title">Projects</p>
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <div style="background:#1e1e1e; border:1px solid #333; border-radius:8px; padding:12px;">
+                            <div class="resume-project-name">Dynamic Pricing System</div>
+                            <div class="resume-project-tech">Python, Machine Learning, Streamlit</div>
+                            <p class="resume-project-desc mt-1">Data-driven pricing model using preprocessing, feature engineering, and predictive modeling to adjust prices based on demand.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:#1e1e1e; border:1px solid #333; border-radius:8px; padding:12px;">
+                            <div class="resume-project-name">Password Strength Analyzer</div>
+                            <div class="resume-project-tech">HTML, CSS, JavaScript</div>
+                            <p class="resume-project-desc mt-1">Real-time password evaluation tool with strength feedback, vulnerability detection, and improvement suggestions.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:#1e1e1e; border:1px solid #333; border-radius:8px; padding:12px;">
+                            <div class="resume-project-name">Catch the Rabbit</div>
+                            <div class="resume-project-tech">HTML, CSS, JavaScript</div>
+                            <p class="resume-project-desc mt-1">Browser-based reflex game using DOM manipulation, state management, and real-time interactivity.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:#1e1e1e; border:1px solid #333; border-radius:8px; padding:12px;">
+                            <div class="resume-project-name">What If? Simulator</div>
+                            <div class="resume-project-tech">HTML, CSS, JavaScript</div>
+                            <p class="resume-project-desc mt-1">Interactive web app for comparing outcomes of user decisions using dynamic inputs and real-time scenario visualization.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Skills -->
+                <p class="resume-section-title">Core Skills</p>
+                <div>
+                    <span class="resume-skill-tag">Python</span>
+                    <span class="resume-skill-tag">JavaScript</span>
+                    <span class="resume-skill-tag">C</span>
+                    <span class="resume-skill-tag">Java</span>
+                    <span class="resume-skill-tag">SQL</span>
+                    <span class="resume-skill-tag">HTML</span>
+                    <span class="resume-skill-tag">CSS</span>
+                    <span class="resume-skill-tag">React</span>
+                    <span class="resume-skill-tag">Flask</span>
+                    <span class="resume-skill-tag">Pandas</span>
+                    <span class="resume-skill-tag">NumPy</span>
+                    <span class="resume-skill-tag">Scikit-learn</span>
+                    <span class="resume-skill-tag">EDA</span>
+                    <span class="resume-skill-tag">Git</span>
+                    <span class="resume-skill-tag">GitHub</span>
+                    <span class="resume-skill-tag">Docker</span>
+                    <span class="resume-skill-tag">Postman</span>
+                    <span class="resume-skill-tag">WordPress</span>
+                    <span class="resume-skill-tag">Elementor</span>
+                    <span class="resume-skill-tag">Jupyter Notebook</span>
+                </div>
+
+                <!-- Certificates -->
+                <p class="resume-section-title">Certificates</p>
+                <div class="resume-cert">Oracle Cloud Infrastructure — Certified Developer Professional</div>
+                <div class="resume-cert">Forage (Accenture, JP Morgan) — Data Analytics</div>
+                <div class="resume-cert">IBM SkillsBuild — Data Science, AI, Web Development</div>
+                <div class="resume-cert">Spoken Tutorial (IIT Bombay) — HTML, Java, R</div>
+
+            </div>
+            <div class="modal-footer">
+                <a href="mailto:revasaxena90@gmail.com" class="btn btn-outline-light btn-sm"><i class="bi bi-envelope me-2"></i>Email Me</a>
+                <a href="https://www.linkedin.com/in/reva-saxena-61bb33342/" target="_blank" class="btn btn-outline-light btn-sm"><i class="bi bi-linkedin me-2"></i>LinkedIn</a>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="about">
+    <div class="container">
+        <h2>About Me</h2>
+        <div class="row g-4">
+            <div class="col-lg-8 col-md-12">
+                <div class="card shadow-sm h-100">
+                    <p>
+                        I am currently pursuing a Bachelor of Computer Applications along with a
+                        specialization in Data Analytics, focusing on building strong technical
+                        expertise in programming, web technologies, and data-driven problem solving.
+                        Through internships and academic projects, I have gained hands-on exposure
+                        to data preprocessing, visualization, debugging, testing, UI implementation,
+                        and analytical reporting using real-world datasets and structured workflows.
+                    </p>
+
+                    <div class="mt-3">
+                        <button class="btn btn-outline-light btn-sm" data-bs-toggle="collapse" data-bs-target="#aboutMore">
+                            Read More
+                        </button>
+                        <div id="aboutMore" class="collapse mt-3">
+                            <p style="color: #d1d5db;">
+                                My interests lie at the intersection of web development and data analytics.
+                                I enjoy building tools and applications that not only look great but also
+                                deliver meaningful insights. I am passionate about continuous learning,
+                                staying updated with emerging technologies, and applying my skills to
+                                solve real-world problems. Currently open to internship opportunities where
+                                I can contribute, learn, and grow in a professional environment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="card shadow-sm h-100">
+                    <h3 style="color: white; margin-bottom: 16px; font-size: 20px;">Quick Info</h3>
+                    <p style="margin-bottom: 8px;"><i class="bi bi-geo-alt me-2" style="color: gray;"></i>Jaipur, Rajasthan, India</p>
+                    <p style="margin-bottom: 8px;"><i class="bi bi-mortarboard me-2" style="color: gray;"></i>BCA + Data Analytics</p>
+                    <p style="margin-bottom: 8px;"><i class="bi bi-briefcase me-2" style="color: gray;"></i>4+ Internships</p>
+                    <p style="margin-bottom: 8px;"><i class="bi bi-folder me-2" style="color: gray;"></i>6 Projects</p>
+                    <p><i class="bi bi-envelope me-2" style="color: gray;"></i>revasaxena90@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="experience">
+    <div class="container">
+        <h2>Experience</h2>
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <h3>Website Developer Intern – Mridul &amp; Rohan (Sep 2025 – Present)</h3>
+                <p>
+                    Converting Figma UI/UX prototypes into responsive and production-ready
+                    websites using WordPress and Elementor. Focused on custom CSS styling,
+                    layout optimization, DOM inspection, front-end debugging, and ensuring
+                    cross-browser compatibility with pixel-accurate UI implementation.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>NDLI Ambassador – National Digital Library of India (Aug 2025 – Present)</h3>
+                <p>
+                    Promoting digital academic resources through workshops and awareness
+                    sessions while collaborating with faculty to integrate NDLI tools into
+                    academic workflows and enhance digital learning adoption on campus.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Data Analytics Intern – Algonive (Jun 2025 – Jul 2025)</h3>
+                <p>
+                    Worked on data collection, cleaning, preprocessing, visualization,
+                    and trend analysis of real-world datasets. Generated structured
+                    analytical reports and insights to support data-driven interpretation
+                    and decision-making processes.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Python Development Intern – Cognifyz Technologies (May 2025 – Jun 2025)</h3>
+                <p>
+                    Developed Python scripts, automation tools, and interactive utilities
+                    involving data handling, validation, file processing, and logical
+                    implementation while following modular coding and debugging practices.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Data Analyst Intern – NullClass (Apr 2025)</h3>
+                <p>
+                    Performed exploratory data analysis, preprocessing, and visualization
+                    using Python, Pandas, and Matplotlib in Jupyter Notebook. Built dashboards,
+                    automated analytical workflows, and extracted actionable insights from datasets.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="container">
+        <h2>Projects</h2>
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm">
+                    <img src="dynamic.png" alt="Dynamic Pricing System" class="img-fluid">
+                    <h3>Dynamic Pricing System</h3>
+                    <p>
+                        A machine learning-based dynamic pricing system that analyzes competition, category, and time to suggest optimal product prices. Simulates real-world e-commerce pricing strategies to maximize revenue using data-driven decisions.
+                    </p>
+                    <button class="btn btn-outline-light mt-2" data-bs-toggle="collapse" data-bs-target="#p6">
+                        Toggle Info
+                    </button>
+                    <div id="p6" class="collapse">
+                        <p>
+                            <strong>Tech:</strong> Python, Pandas, NumPy, Scikit-learn, Streamlit
+                            <br>
+                            <strong>Impact:</strong> Demonstrates revenue optimization through dynamic pricing and simulates real-world business pricing strategies.
+                        </p>
+                    </div>
+                    <a href="https://dynamic-pricing-system-57pfa36vwafwytsxqvstfg.streamlit.app/" target="_blank" class="project-link btn btn-outline-light">
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm">
+                    <img src="ps.png" alt="Password Strength Analyzer" class="img-fluid">
+                    <h3>Password Strength Analyzer</h3>
+                    <p>
+                        A browser-based password strength analyzer that evaluates passwords in real time using length, complexity, and entropy, with dynamic feedback and a built-in generator.
+                        Includes breach detection to warn users if the password has appeared in known leaks.
+                    </p>
+                    <button class="btn btn-outline-light mt-2" data-bs-toggle="collapse" data-bs-target="#p1">
+                        Toggle Info
+                    </button>
+                    <div id="p1" class="collapse">
+                        <p>
+                            <strong>Tech:</strong> HTML, CSS, JavaScript, RegEx, DOM
+                            <br>
+                            <strong>Impact:</strong> Simulates real-world password validation systems used in secure authentication.
+                        </p>
+                    </div>
+                    <a href="https://password-strength-analyser.netlify.app/" target="_blank" class="project-link btn btn-outline-light">Live Demo</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm">
+                    <img src="rabbit.png" alt="Catch the Rabbit" class="img-fluid">
+                    <h3>Catch the Rabbit</h3>
+                    <p>
+                        A browser-based interactive reflex game built using HTML, CSS, and
+                        JavaScript demonstrating real-time DOM manipulation, event handling,
+                        and dynamic UI interaction with responsive gameplay and optimized
+                        front-end performance.
+                    </p>
+                    <button class="btn btn-outline-light mt-2" data-bs-toggle="collapse" data-bs-target="#p2">
+                        Toggle Info
+                    </button>
+                    <div id="p2" class="collapse">
+                        <p>
+                            <strong>Tech:</strong> HTML, CSS, JavaScript, DOM Events
+                            <br>
+                            <strong>Impact:</strong> Demonstrates real-time user interaction handling and improves reflex-based UI responsiveness in web applications.
+                        </p>
+                    </div>
+                    <a href="http://rabbit-virid-pi.vercel.app" target="_blank" class="project-link btn btn-outline-light">Live Demo</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm">
+                    <img src="what.png" alt="What If Simulator" class="img-fluid">
+                    <h3>What If Simulator</h3>
+                    <p>
+                        An interactive web application designed to simulate different decision outcomes using structured JavaScript logic, conditional workflows, and user interaction design for an engaging analytical simulation experience. Enables users to explore how different inputs impact outcomes.
+                    </p>
+                    <button class="btn btn-outline-light mt-2" data-bs-toggle="collapse" data-bs-target="#p3">
+                        Toggle Info
+                    </button>
+                    <div id="p3" class="collapse">
+                        <p>
+                            <strong>Tech:</strong> HTML, CSS, JavaScript, Conditional Logic
+                            <br>
+                            <strong>Impact:</strong> Simulates real-world decision-making systems used in analytics and scenario-based problem solving.
+                        </p>
+                    </div>
+                    <a href="https://creative-axolotl-368dd6.netlify.app/" target="_blank" class="project-link btn btn-outline-light">Live Demo</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm">
+                    <img src="tab.png" alt="Tab Reminder" class="img-fluid">
+                    <h3>Tab Reminder Web Application</h3>
+                    <p>
+                        A productivity-focused browser web application built using HTML, CSS, and JavaScript that enables users to set custom tab reminders and manage focused browsing sessions. Demonstrates DOM manipulation, event handling, and real-time reminder functionality.
+                    </p>
+                    <button class="btn btn-outline-light mt-2" data-bs-toggle="collapse" data-bs-target="#p4">
+                        Toggle Info
+                    </button>
+                    <div id="p4" class="collapse">
+                        <p>
+                            <strong>Tech:</strong> HTML, CSS, JavaScript, DOM, Event Handling
+                            <br>
+                            <strong>Impact:</strong> Demonstrates real-time task management and user productivity enhancement through interactive browser-based tools.
+                        </p>
+                    </div>
+                    <a href="https://tab-reminder.netlify.app/" target="_blank" class="project-link btn btn-outline-light">Live Demo</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm">
+                    <h3>Google Play Store Data Analytics</h3>
+                    <p>
+                        A data analysis project focused on evaluating app ratings, categories,
+                        and performance metrics using Python, Pandas, and visualization techniques.
+                        The project involves data preprocessing, cleaning, and transformation
+                        to ensure accurate analysis of real-world datasets.
+                        Includes trend analysis to identify patterns and user behavior insights.
+                        Visualizations are used to present findings in a clear and structured manner.
+                    </p>
+                    <button class="btn btn-outline-light mt-2" data-bs-toggle="collapse" data-bs-target="#p5">
+                        Toggle Info
+                    </button>
+                    <div id="p5" class="collapse">
+                        <p>
+                            <strong>Tech:</strong> Python, Pandas, Matplotlib
+                            <br>
+                            <strong>Impact:</strong> Demonstrates data-driven decision making through trend analysis and visualization of real-world datasets.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!--SKILLS-->
+<section id="skills">
+    <div class="container">
+        <h2>Skills</h2>
+        <div class="skills-table-wrapper">
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered table-striped table-skills">
+                    <thead>
+                        <tr>
+                            <th scope="col">Category</th>
+                            <th scope="col">Skills</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Web Development</strong></td>
+                            <td>HTML, CSS, JavaScript, Responsive Web Design, DOM Manipulation, UI Implementation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data Analysis</strong></td>
+                            <td>Python, Pandas, Matplotlib, Data Cleaning, Data Visualization, Data Preprocessing, Large-scale Data Analysis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Database</strong></td>
+                            <td>SQL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CMS &amp; Tools</strong></td>
+                            <td>WordPress, Elementor, Chrome DevTools, Jupyter Notebook</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Testing &amp; Debugging</strong></td>
+                            <td>Testing, Front-End Debugging</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Progress Bars -->
+            <div class="skill-progress-section mt-4">
+                <h5 class="text-white mb-4"><i class="bi bi-speedometer2 me-2"></i>Proficiency Overview</h5>
+
+                <div class="skill-progress-label">
+                    <span>HTML / CSS / JavaScript</span><span>85%</span>
+                </div>
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <div class="skill-progress-label">
+                    <span>Python &amp; Data Analysis</span><span>80%</span>
+                </div>
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: 98%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <div class="skill-progress-label">
+                    <span>Pandas &amp; Matplotlib</span><span>75%</span>
+                </div>
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <div class="skill-progress-label">
+                    <span>WordPress &amp; Elementor</span><span>70%</span>
+                </div>
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <div class="skill-progress-label">
+                    <span>SQL</span><span>65%</span>
+                </div>
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--IMAGE GALLERY — carousel removed, grid only-->
+<section id="gallery">
+    <div class="container">
+        <h2>Gallery</h2>
+        <div class="row g-3">
+            <div class="col-6 col-md-4 col-lg-3">
+                <img src="dynamic.png" class="gallery-img img-fluid rounded" alt="Dynamic Pricing">
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <img src="ps.png" class="gallery-img img-fluid rounded" alt="Password Strength">
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <img src="rabbit.png" class="gallery-img img-fluid rounded" alt="Catch the Rabbit">
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <img src="what.png" class="gallery-img img-fluid rounded" alt="What If Simulator">
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <img src="tab.png" class="gallery-img img-fluid rounded" alt="Tab Reminder">
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <img src="web.jpg" class="gallery-img img-fluid rounded" alt="Web Vision">
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <img src="data.jpg" class="gallery-img img-fluid rounded" alt="Data Science">
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <img src="isec.jpg" class="gallery-img img-fluid rounded" alt="ISEC">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--CONTACT-->
+<section id="contact">
+    <div class="container">
+        <h2>Contact</h2>
+        <div class="row g-4">
+            <div class="col-12">
+                <p class="mb-1" style="color: silver; font-size: 17px;">revasaxena90@gmail.com</p>
+                <p class="mb-0" style="color: silver; font-size: 17px;">6378863351</p>
+            </div>
+            <div class="col-12">
+                <div class="contact-form-card shadow rounded">
+                    <h3 class="text-white mb-4" style="font-size: 22px;">Send a Message</h3>
+
+                    <form id="contactForm" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label" for="fname">Full Name</label>
+                            <input type="text" class="form-control" id="fname" placeholder="Enter your full name" required>
+                            <div class="error-msg" id="err-name">⚠ Name cannot be empty.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="femail">Email Address</label>
+                            <input type="email" class="form-control" id="femail" placeholder="Enter your email" required>
+                            <div class="error-msg" id="err-email">⚠ Please enter a valid email address.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="fmobile">Mobile Number</label>
+                            <input type="tel" class="form-control" id="fmobile" placeholder="Enter your 10-digit mobile number" required>
+                            <div class="error-msg" id="err-mobile">⚠ Please enter a valid 10-digit mobile number.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="fmessage">Message</label>
+                            <textarea class="form-control" id="fmessage" rows="4" placeholder="Write your message here..." required></textarea>
+                            <div class="error-msg" id="err-message">⚠ Message cannot be empty.</div>
+                        </div>
+
+                        <button type="button" class="btn btn-outline-light px-5" onclick="validateForm()">
+                            Send Message
+                        </button>
+                    </form>
+
+                    <div id="form-success">
+                         Your message has been sent successfully! I'll get back to you soon.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="summary">
+    <div class="container">
+        <h2>Summary</h2>
+        <div class="table-responsive">
+            <table class="table table-dark table-bordered table-striped text-center mt-3">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Projects</td>
+                        <td>6 Completed</td>
+                    </tr>
+                    <tr>
+                        <td>Core Skills</td>
+                        <td>Web Development, Data Analysis, Data Visualization, Problem Solving</td>
+                    </tr>
+                    <tr>
+                        <td>Tools &amp; Technologies</td>
+                        <td>Python, Pandas, Matplotlib, SQL, JavaScript, WordPress</td>
+                    </tr>
+                    <tr>
+                        <td>Internships</td>
+                        <td>4+ across Development, Analytics &amp; Cybersecurity</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--pagination-->
+        <div class="pagination-wrapper">
+            <nav aria-label="Portfolio pagination">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#about">About</a></li>
+                    <li class="page-item"><a class="page-link" href="#experience">Experience</a></li>
+                    <li class="page-item active"><a class="page-link" href="#projects">Projects</a></li>
+                    <li class="page-item"><a class="page-link" href="#skills">Skills</a></li>
+                    <li class="page-item"><a class="page-link" href="#gallery">Gallery</a></li>
+                    <li class="page-item"><a class="page-link" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Made by <a href="https://www.linkedin.com/in/reva-saxena-61bb33342/" target="_blank">Reva</a>
+</footer>
+
+<script>
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navbar-nav .nav-link:not(.dropdown-toggle)");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active-link");
+        link.style.color = "";
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active-link");
+        }
+    });
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show-anim");
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll("section, .card, .timeline-item").forEach(el => {
+    el.classList.add("hidden");
+    observer.observe(el);
+});
+
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+};
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+function validateForm() {
+    let valid = true;
+
+    document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+    document.getElementById('form-success').style.display = 'none';
+
+    const name    = document.getElementById('fname').value.trim();
+    const email   = document.getElementById('femail').value.trim();
+    const mobile  = document.getElementById('fmobile').value.trim();
+    const message = document.getElementById('fmessage').value.trim();
+
+    if (name === '') {
+        document.getElementById('err-name').style.display = 'block';
+        valid = false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        document.getElementById('err-email').style.display = 'block';
+        valid = false;
+    }
+
+    const mobileRegex = /^[6-9]\d{9}$/;
+    if (!mobileRegex.test(mobile)) {
+        document.getElementById('err-mobile').style.display = 'block';
+        valid = false;
+    }
+
+    if (message === '') {
+        document.getElementById('err-message').style.display = 'block';
+        valid = false;
+    }
+
+    if (valid) {
+        document.getElementById('form-success').style.display = 'block';
+        document.getElementById('contactForm').reset();
+    }
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
